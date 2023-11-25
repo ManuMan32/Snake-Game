@@ -1,0 +1,185 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Martian Mono', monospace;
+}
+
+#screen {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #000;
+}
+#title-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 10000;
+	background-color: #000;
+	transition: opacity .5s;
+}
+#title {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 200px;
+}
+.letter {
+	display: flex;
+	position: relative;
+	width: 120px;
+	height: 150px;
+}
+.letter-part {
+	transition: left .5s, top 2s, height 1s, opacity 1s;
+}
+#letterS > div {
+	transition: height 1s, opacity 1s;
+}
+#play-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	height: 70px;
+	margin: 30px auto;
+	background-color: #fff;
+	border-radius: 80px;
+	font-size: 43px;
+	transition: opacity .5s;
+}
+#play-button:hover {
+	background-color: #ccc;
+	cursor: pointer;
+}
+#credits {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	color: #fff;
+	transition: opacity .5s;
+}
+
+#game {
+	position: relative;
+	display: flex;
+	width: 480px;
+	height: 480px;
+	border: 2px solid #fff;
+}
+
+#player, .part, .apple, .letter-part {
+	position: absolute;
+	background-color: #fff;
+	width: 30px;
+	height: 30px;
+}
+#player { z-index: 100; }
+.eye {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background-color: #000;
+}
+.eye1 {
+	top: 5px;
+	left: 15px;
+}
+.eye2 {
+	top: 20px;
+	left: 15px;
+}
+
+#game-over {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: -60px;
+	width: 100%;
+	height: 60px;
+	font-size: 40px;
+	text-align: center;
+	color: #fff;
+	opacity: 0;
+	transition: opacity .5s;
+}
+#try-again {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: calc(100% - 120px);
+	height: 60px;
+	bottom: -60px;
+	margin: 0 60px;
+	background-color: #fff;
+	opacity: 0;
+	transition: opacity 1s;
+}
+#try-again:hover {
+	cursor: pointer;
+	background-color: #ccc;
+}
+
+#android-panel {
+	display: none;
+}
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	border: 2px solid #fff;
+}
+
+#left-button { grid-row: 1 / 3; }
+#up-button { grid-column: 2 / 4; }
+#right-button { grid-column: 4 / 5; grid-row: 1 / 3; }
+#down-button { grid-row: 2 / 3; grid-column: 2 / 4; }
+#up-button > div { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+#left-button > div { clip-path: polygon(0 50%, 100% 100%, 100% 0); }
+#down-button > div { clip-path: polygon(100% 0, 0 0, 50% 100%); }
+#right-button > div { clip-path: polygon(100% 50%, 0 0, 0 100%); }
+.button-icon {
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+}
+
+@Media only screen and (max-width: 700px) {
+	#game { top: -30px; width: 300px; }
+	.letter { width: 60px; height: 75px; }
+	.letter-part { width: 15px; height: 15px; }
+	#s1 > .eye1 {
+		width: 3px;
+		height: 3px;
+		top: 2px;
+		left: 7px;
+	}
+	#s1 > .eye2 {
+		width: 3px;
+		height: 3px;
+		top: 10px;
+		left: 7px;
+	}
+	#game-over { display: none; }
+	#try-again { top: 0; height: 50px; }
+	#android-panel {
+		display: grid;
+		grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr;
+		justify-content: center;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 140px;
+		opacity: .5;
+	}
+}
